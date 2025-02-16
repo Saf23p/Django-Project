@@ -146,8 +146,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = 'users:login'
 
-from django.contrib.auth.backends import ModelBackend
-
 AUTHETICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend'
+    'django.contrib.auth.backends.ModelBackend',
+    'users.authentication.EmailAuthBackend',
 ]

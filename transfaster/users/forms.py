@@ -37,3 +37,7 @@ class RegisterUserForm(UserCreationForm):
         if get_user_model().objects.filter(email=email).exists():
             raise forms.ValidationError('Такой email уже существует')
         return email
+
+
+class UserPasswordChangeForm(PasswordChangeForm):
+    old_password # в процессе
