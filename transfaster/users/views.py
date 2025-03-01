@@ -7,10 +7,12 @@ from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView
 
-from tfcargo.forms import ProfileUserForm
+from .forms import ProfileUserForm
 from users.forms import LoginUsersForm, RegisterUserForm
 
 from users.forms import UserPasswordChangeForm
+
+from transfaster import settings
 
 
 class LoginUser(LoginView):
@@ -45,7 +47,9 @@ class ProfileUser(LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = ProfileUserForm
     template_name = 'users/profile.html'
-    extra_context = {'title': 'Профиль пользователя'}
+    extra_context = {
+        'title': 'Профиль пользователя',
+        'default_image': settings.DEFAULT_USER_IMAGE}
 
     def get_success_url(self):
         return reverse_lazy('users:profile')

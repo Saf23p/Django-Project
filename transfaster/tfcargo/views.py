@@ -136,3 +136,5 @@ def show_tag_postlist(request, tag_slug):
 
 def page_not_found(requests, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
+
+
